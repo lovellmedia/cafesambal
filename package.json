@@ -1,0 +1,19 @@
+{
+  "name": "cafesambal",
+  "version": "0.0.1",
+  "description": "Technical research site on Southeast Asian cuisine recipes",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^4.16.18",
+    "astro-seo": "^0.8.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0"
+  }
+}

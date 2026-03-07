@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { navItems, footerLinks } from '../../../data/site';
+---
+
+<BaseLayout
+  title="Sambal Batch Scaler | Cafe Sambal"
+  description="Interactive batch scaler for adjusting sambal ingredient quantities for small or large home-cooking batches."
+  navItems={navItems}
+  footerLinks={footerLinks}
+>
+  <div class="page-shell tool-shell">
+    <h1>Sambal Batch Scaler</h1>
+    <p>Enter your base recipe quantities and the number of servings you want to produce. The tool scales the core ingredients for you.</p>
+
+    <form class="tool-card" onsubmit="return false;">
+      <label>
+        Base chili amount (grams)
+        <input id="chilies" type="number" min="1" value="150" />
+      </label>
+      <label>
+        Base shallot amount (grams)
+        <input id="shallots" type="number" min="1" value="60" />
+      </label>
+      <label>
+        Base oil amount (tablespoons)
+        <input id="oil" type="number" min="0" step="0.5" value="3" />
+      </label>
+      <label>
+        Multiply batch by
+        <input id="factor" type="number" min="0.25" step="0.25" value="2" />
+      </label>
+
+      <button type="button" onclick="scaleBatch()">Scale recipe</button>
+      <div id="scaled-result" class="result"></div>
+    </form>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  function scaleBatch() {
+    const chilies = Number(document.getElementById('chilies').value || 0);
+    const shallots = Number(document.getElementById('shallots').value || 0);
+    const oil = Number(document.getElementById('oil').value || 0);
+    const factor = Number(document.getElementById('factor').value || 1);
+    const result = document.getElementById('scaled-result');
+
+    const scaledChilies = (chilies * factor).toFixed(0);
+    const scaledShallots = (shallots * factor).toFixed(0);
+    const scaledOil = (oil * factor).toFixed(1);
+
+    result.innerHTML = `Use <strong>${scaledChilies} g</strong> chilies, <strong>${scaledShallots} g</strong> shallots, and <strong>${scaledOil} tbsp</strong> oil. Taste before multiplying salt, acid, or sugar exactly; those often need a slightly smaller increase than the core ingredients.`;
+  }
+</script>
+
+<style>
+  .tool-shell {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .tool-card {
+    max-width: 680px;
+    display: grid;
+    gap: 1rem;
+    background: rgba(255, 250, 245, 0.88);
+    border: 1px solid rgba(124, 45, 18, 0.12);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+  label {
+    display: grid;
+    gap: 0.45rem;
+    font-weight: 600;
+    color: #7c2d12;
+  }
+  input,
+  button {
+    font: inherit;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(124, 45, 18, 0.18);
+  }
+  button {
+    background: #c2410c;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .result {
+    min-height: 4rem;
+    background: #fff7ed;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    line-height: 1.7;
+    color: #4b3325;
+  }
+</style>

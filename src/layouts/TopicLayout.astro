@@ -1,0 +1,56 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import Sidebar from '../components/Sidebar.astro';
+
+const {
+  title,
+  description,
+  topic,
+  pillar,
+  relatedTopics = [],
+  keyPoints = [],
+  navItems = [],
+  footerLinks = [],
+  pillarLinks = [],
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} navItems={navItems} footerLinks={footerLinks}>
+  <div class="page-shell">
+    <Navigation currentTopic={{ href: `/${topic.slug}/`, label: topic.label }} currentPillar={pillar} links={pillarLinks} />
+    <div class="topic-grid">
+      <article class="topic-content">
+        <slot />
+      </article>
+      <Sidebar relatedTopics={relatedTopics} keyPoints={keyPoints} />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .topic-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.4fr) minmax(260px, 0.9fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .topic-content {
+    background: rgba(255, 250, 245, 0.7);
+    border: 1px solid rgba(124, 45, 18, 0.1);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    box-shadow: 0 20px 50px rgba(124, 45, 18, 0.08);
+  }
+
+  @media (max-width: 960px) {
+    .topic-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .topic-content {
+      padding: 1.5rem;
+    }
+  }
+</style>

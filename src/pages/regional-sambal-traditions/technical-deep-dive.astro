@@ -1,0 +1,76 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import { topic, navItems, footerLinks, pillarLinks } from '../../data/site';
+
+const pageLinks = pillarLinks.map((link) => ({ ...link, active: link.href === `/${topic.slug}/technical-deep-dive/` }));
+const relatedTopics = pillarLinks.filter((link) => link.href !== `/${topic.slug}/technical-deep-dive/`).map((link) => ({ href: link.href, label: link.label }));
+const keyPoints = [
+  'Texture is a primary design choice in sambal, not an afterthought.',
+  'Salt, acid, sugar, and oil reshape perceived heat and stability.',
+  'Cooking method determines whether sambal reads fresh, mellow, or deep.',
+];
+---
+
+<TopicLayout
+  title="Technical Deep-Dive on Sambal Technique | Cafe Sambal"
+  description="A technical guide to sambal texture, ingredient function, cooking method, and storage behavior in regional Southeast Asian kitchens."
+  topic={topic}
+  pillar="Technical Deep-Dive"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+  navItems={navItems}
+  footerLinks={footerLinks}
+  pillarLinks={pageLinks}
+>
+  <h1>Technical Deep-Dive: How Sambal Works in the Kitchen</h1>
+  <p>
+    Technique explains why two sambals built from similar ingredients can taste completely different. Grinding method, ingredient order, oil temperature, and the balance of salt, acid, and sweetness all influence how heat lands on the palate.
+    A cook who only follows ingredient lists will often miss the structural logic behind a sambal. This page focuses on that logic so you can reproduce style intentionally rather than by luck.
+  </p>
+  <p>
+    For the broader category map, return to the <a href={`/${topic.slug}/`}>overview page</a>. For historical context on why these methods developed, read the <a href={`/${topic.slug}/history/`}>history page</a>. For vocabulary and style families,
+    the <a href={`/${topic.slug}/ontology/`}>ontology page</a> remains the fastest glossary reference.
+  </p>
+
+  <ContentSection title="Grinding texture and aromatic release">
+    <p>
+      Mortar-pounded sambal and blender-made sambal are not equivalent, even when they use the same ingredients. Hand pounding bruises ingredients unevenly, releases oils gradually, and leaves small chunks that produce bursts of flavor. Machine blending often creates a more uniform texture, but it can also
+      introduce water, over-process aromatics, and flatten the layered feel of the condiment. For some styles, that smoothness is acceptable; for others, it makes the sambal feel generic.
+    </p>
+    <p>
+      The practical question is not which tool is morally better, but which structure suits the intended dish. A rough sambal may cling beautifully to grilled fish or fried egg, while a smoother cooked sambal may integrate better as a base. If your batch feels lifeless, the
+      <a href={`/${topic.slug}/challenges/`}>troubleshooting page</a> includes texture-specific fixes.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="The balancing role of salt, acid, and sweetness">
+    <p>
+      Heat is never experienced in isolation. Salt sharpens and clarifies. Acid brightens and tightens. Sugar rounds bitterness and can make a sambal feel fuller without making it dessert-like. Oil carries aroma and smooths harsh edges, especially in cooked sambals. Understanding these relationships matters more than counting chilies,
+      because a badly balanced sambal can taste hotter yet less flavorful than a well-seasoned one.
+    </p>
+    <p>
+      This is exactly why regional formulas diverge. Some lean on lime or tamarind, some bring sweetness through palm sugar or sweet soy, and some anchor depth with shrimp paste. The <a href={`/${topic.slug}/tools/`}>tools page</a> includes a heat-balancing helper for adjusting those variables intentionally.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Raw versus cooked sambal">
+    <p>
+      Raw sambals preserve immediacy. Their heat can feel sharper, their aromatics more pointed, and their shelf life shorter. Cooked sambals usually develop roundness and cohesion as ingredients fry, soften, and meld. Oil plays a more visible role here, carrying flavor while reducing the edge of fresh chilies.
+      A cook deciding between raw and cooked styles is deciding not only on taste, but also on where the sambal sits in the meal: finishing condiment, table accompaniment, or integrated flavor base.
+    </p>
+    <p>
+      The current restaurant and pantry implications of this distinction appear on the <a href={`/${topic.slug}/trends/`}>trends page</a>, while the style definitions themselves are cataloged on the <a href={`/${topic.slug}/ontology/`}>ontology page</a>.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Storage, shelf life, and repeatability">
+    <p>
+      Because sambal can include fresh produce, seafood products, or significant moisture, storage outcomes vary. Cooked sambals often keep longer than raw versions, but no single storage rule fits every style. Clean containers, appropriate cooling, and avoiding unnecessary dilution all matter. The more water you introduce,
+      the more fragile the batch becomes. Likewise, under-seasoned sambals can taste flat and spoil faster.
+    </p>
+    <p>
+      Repeatability comes from documenting your process: chili type, whether ingredients were roasted or raw, how long the paste was cooked, and how balance was adjusted at the end. For cooks trying to standardize results, the scaling and substitution helpers on the <a href={`/${topic.slug}/tools/`}>tools page</a> are designed as workflow aids rather than gimmicks.
+    </p>
+  </ContentSection>
+</TopicLayout>

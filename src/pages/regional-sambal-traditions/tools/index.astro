@@ -1,0 +1,44 @@
+---
+import TopicLayout from '../../../layouts/TopicLayout.astro';
+import ContentSection from '../../../components/ContentSection.astro';
+import { topic, navItems, footerLinks, pillarLinks } from '../../../data/site';
+
+const pageLinks = pillarLinks.map((link) => ({ ...link, active: link.href === `/${topic.slug}/tools/` }));
+const relatedTopics = pillarLinks.filter((link) => link.href !== `/${topic.slug}/tools/`).map((link) => ({ href: link.href, label: link.label }));
+const keyPoints = [
+  'The tool pages are built for real kitchen decisions, not placeholder demos.',
+  'Use them together with the technical and challenges pages for better results.',
+  'Each tool focuses on scaling, substitutions, or balance correction.',
+];
+---
+
+<TopicLayout
+  title="Sambal Tools and Resources | Cafe Sambal"
+  description="Practical tools and resources for balancing heat, scaling batches, and making ingredient substitutions in sambal cooking."
+  topic={topic}
+  pillar="Tools"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+  navItems={navItems}
+  footerLinks={footerLinks}
+  pillarLinks={pageLinks}
+>
+  <h1>Tools and Resources for Regional Sambal Cooking</h1>
+  <p>
+    The best sambal tools help a cook make choices they already face in the kitchen: how to scale a batch, what to do when a key ingredient is missing, and how to rebalance a mixture that tastes too hot, too sweet, or too sharp.
+    This section gathers those utilities so the site becomes something you can cook with rather than simply read.
+  </p>
+  <p>
+    Start with the <a href={`/${topic.slug}/technical-deep-dive/`}>technical deep-dive</a> if you want the method logic first. If your batch has already gone wrong, the <a href={`/${topic.slug}/challenges/`}>challenges page</a> gives context for the tools below. Readers needing vocabulary support should keep the <a href={`/${topic.slug}/ontology/`}>ontology page</a> nearby.
+  </p>
+
+  <ContentSection title="Available tools">
+    <ul>
+      <li><a href={`/${topic.slug}/tools/heat-balancer/`}>Heat balancer</a> — suggests adjustments when a sambal tastes too aggressive, too sweet, or too flat.</li>
+      <li><a href={`/${topic.slug}/tools/batch-scaler/`}>Batch scaler</a> — scales chili, aromatics, and seasoning for larger or smaller sambal batches.</li>
+    </ul>
+    <p>
+      These tools are intentionally simple and practical. They do not attempt to replace tasting, but they do make it easier to translate kitchen observations into a concrete next step.
+    </p>
+  </ContentSection>
+</TopicLayout>

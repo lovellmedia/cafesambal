@@ -1,0 +1,76 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import { topic, navItems, footerLinks, pillarLinks } from '../../data/site';
+
+const pageLinks = pillarLinks.map((link) => ({ ...link, active: link.href === `/${topic.slug}/ontology/` }));
+const relatedTopics = pillarLinks.filter((link) => link.href !== `/${topic.slug}/ontology/`).map((link) => ({ href: link.href, label: link.label }));
+const keyPoints = [
+  'Sambal names usually encode ingredients, color, process, or service context.',
+  'Fresh, cooked, and fermented families solve different flavor problems.',
+  'A good glossary prevents one-style-fits-all misunderstandings.',
+];
+---
+
+<TopicLayout
+  title="Sambal Ontology and Knowledge Base | Cafe Sambal"
+  description="A structured glossary and taxonomy for understanding sambal families, ingredients, and culinary terms across regional traditions."
+  topic={topic}
+  pillar="Ontology"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+  navItems={navItems}
+  footerLinks={footerLinks}
+  pillarLinks={pageLinks}
+>
+  <h1>Ontology and Knowledge Base for Regional Sambal Traditions</h1>
+  <p>
+    A sambal glossary is not just a list of definitions. It is a map of how cooks talk about ingredients, texture, process, and service. Without a structured vocabulary,
+    readers tend to collapse all sambals into a single idea and lose the distinctions that make regional traditions meaningful. This page organizes the category into a working knowledge base,
+    so you can connect terms to kitchen behavior rather than memorizing names in isolation.
+  </p>
+  <p>
+    If you need the broader narrative first, the <a href={`/${topic.slug}/`}>overview page</a> introduces the category and the <a href={`/${topic.slug}/history/`}>history page</a> explains where the diversity comes from.
+    For application, move from this glossary to the <a href={`/${topic.slug}/technical-deep-dive/`}>technical deep-dive</a>, the <a href={`/${topic.slug}/tools/`}>tools library</a>, and the <a href={`/${topic.slug}/challenges/`}>troubleshooting guide</a>.
+  </p>
+
+  <ContentSection title="Primary taxonomic families">
+    <p>
+      A useful first split divides sambal into fresh, cooked, and fermented-forward families. Fresh sambals are driven by immediate chili and aromatic expression. Cooked sambals build depth through frying or simmering,
+      often becoming rounder and more integrated. Fermented-forward sambals derive much of their profile from ingredients such as shrimp paste, which changes both aroma and perceived savoriness. These families overlap,
+      but the categories help explain why similar ingredient lists can still produce very different outcomes.
+    </p>
+    <p>
+      This taxonomy supports the technical framework on the <a href={`/${topic.slug}/technical-deep-dive/`}>technical page</a> and the market-facing discussion on the <a href={`/${topic.slug}/trends/`}>trends page</a>.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Key terms every reader should know">
+    <p>
+      <strong>Belacan / Terasi:</strong> fermented shrimp paste used for deep savory aroma. <strong>Sambal oelek:</strong> a relatively simple chili paste form often treated in global markets as generic sambal, even though the regional category is much wider.
+      <strong>Lalapan:</strong> raw vegetables often served with condiments in Indonesian dining contexts. <strong>Balado:</strong> a Minangkabau-associated chili preparation style frequently tied to dish naming.
+      <strong>Hijau:</strong> green, often used to describe green-chili-based sambals.
+    </p>
+    <p>
+      Many readers first encounter these words without any explanation of how they change cooking choices. That gap is why the <a href={`/${topic.slug}/`}>overview</a> and <a href={`/${topic.slug}/history/`}>history</a> pages remain essential companions to the glossary.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Naming patterns and what they signal">
+    <p>
+      Sambal names often reveal one of four things: ingredient, color, process, or pairing context. A name may highlight tomatoes, green chilies, shrimp paste, or sweet soy. It may indicate whether the sambal is pounded,
+      cooked, or associated with a specific dish family. Reading names this way helps cooks avoid treating labels as decorative. The name frequently points to what the sambal is trying to accomplish.
+    </p>
+    <p>
+      For cooks translating names into action, the <a href={`/${topic.slug}/tools/`}>tools page</a> includes practical support for substitutions and scaling, while the <a href={`/${topic.slug}/challenges/`}>challenges page</a> helps when the result does not align with the intended style.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="How to use this knowledge base">
+    <p>
+      Treat this page as a reference layer. When a recipe or regional description introduces a term you do not know, come back here to identify what the word suggests about texture, ingredient base, or service role.
+      Then move outward to the corresponding pillar page: <a href={`/${topic.slug}/technical-deep-dive/`}>technical</a> for process, <a href={`/${topic.slug}/trends/`}>trends</a> for contemporary movement,
+      <a href={`/${topic.slug}/tools/`}>tools</a> for practical decisions, and <a href={`/${topic.slug}/challenges/`}>challenges</a> for correction.
+    </p>
+  </ContentSection>
+</TopicLayout>

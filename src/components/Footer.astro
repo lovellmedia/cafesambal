@@ -1,0 +1,73 @@
+---
+const { domain = 'cafesambal.com', links = [] } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="inner">
+    <div>
+      <p class="title">Cafe Sambal</p>
+      <p class="meta">Independent reference on sambal traditions, recipes, and kitchen technique.</p>
+    </div>
+    <nav class="links" aria-label="Footer navigation">
+      {links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+  </div>
+  <p class="copyright">© {year} {domain}. All rights reserved.</p>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 4rem;
+    background: #431407;
+    color: #ffedd5;
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 1rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .title {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .meta {
+    margin: 0;
+    color: rgba(255, 237, 213, 0.85);
+    line-height: 1.6;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .links a {
+    color: #fdba74;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .copyright {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 1.5rem;
+    color: rgba(255, 237, 213, 0.75);
+  }
+
+  @media (max-width: 768px) {
+    .inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

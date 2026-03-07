@@ -1,0 +1,48 @@
+---
+const { title } = Astro.props;
+---
+
+<section class="content-section">
+  {title && <h2>{title}</h2>}
+  <div class="content-body">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .content-section {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin: 0 0 0.85rem;
+    color: #7c2d12;
+    font-size: 1.65rem;
+    line-height: 1.2;
+  }
+
+  .content-body :global(p),
+  .content-body :global(li),
+  .content-body :global(blockquote) {
+    color: #3f2a1d;
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  .content-body :global(ul),
+  .content-body :global(ol) {
+    padding-left: 1.4rem;
+  }
+
+  .content-body :global(a) {
+    color: #9a3412;
+    font-weight: 600;
+  }
+
+  .content-body :global(blockquote) {
+    margin: 1rem 0;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid #fb923c;
+    background: #fff7ed;
+  }
+</style>

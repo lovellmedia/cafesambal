@@ -1,0 +1,93 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import { topic, navItems, footerLinks, pillarLinks } from '../../data/site';
+
+const pageLinks = pillarLinks.map((link) => ({ ...link, active: link.href === `/${topic.slug}/` }));
+const relatedTopics = pillarLinks.filter((link) => link.href !== `/${topic.slug}/`).map((link) => ({ href: link.href, label: link.label }));
+const keyPoints = [
+  'Sambal is a category of condiments, not one fixed recipe.',
+  'Regional variations reflect ingredient access, climate, and dining habits.',
+  'Texture, fermentation, and cooking method change both flavor and use case.',
+];
+---
+
+<TopicLayout
+  title="Regional Sambal Traditions Overview | Cafe Sambal"
+  description="An overview of regional sambal traditions across Indonesia, Malaysia, and Singapore, with focus on ingredients, use, and kitchen context."
+  topic={topic}
+  pillar="Overview"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+  navItems={navItems}
+  footerLinks={footerLinks}
+  pillarLinks={pageLinks}
+>
+  <h1>Regional Sambal Traditions Across Maritime Southeast Asia</h1>
+  <p>
+    Sambal is best understood as a family of chili-based condiments that has grown through trade, local agriculture, and household practice.
+    It appears in Indonesian, Malaysian, Singaporean, Bruneian, and neighboring food cultures, but the shared name hides major differences in texture,
+    aroma, color, sweetness, saltiness, and how the paste is actually used at the table. The goal of this overview is to map those patterns so a cook can
+    understand why one sambal belongs beside grilled fish, another works better as a fried dish base, and still another is intended to wake up rice,
+    noodles, or a platter of fresh vegetables.
+  </p>
+  <p>
+    General reference sources such as <a href="https://en.wikipedia.org/wiki/Sambal">Wikipedia’s overview of sambal</a> and the
+    <a href="https://en.wikipedia.org/wiki/Varieties_of_sambal">catalog of sambal varieties</a> show the breadth of the category, while the open-access
+    Journal of Ethnic Foods review on <a href="https://journalofethnicfoods.biomedcentral.com/articles/10.1186/s42779-022-00142-7">traditional Indonesian sambals</a>
+    helps explain why regional diversity is not incidental but structural to the cuisine. If you want the backstory first, continue to the
+    <a href={`/${topic.slug}/history/`}>history and evolution page</a>. If you are already thinking about mortar texture, oil handling, or shrimp-paste balance,
+    the <a href={`/${topic.slug}/technical-deep-dive/`}>technical deep-dive</a> picks up from there.
+  </p>
+
+  <ContentSection title="What makes sambal a category rather than a single sauce?">
+    <p>
+      The category includes raw sambals built around fresh chilies and aromatics, cooked sambals mellowed in oil, sweet-leaning table sambals, and pungent
+      fermented versions that derive much of their identity from shrimp paste or other savory bases. Because of that spread, a cook who assumes sambal means
+      only a smooth red chili paste will miss the logic of green sambals, tomato-based sambals, sambals with pronounced citrus lift, and variants that are
+      spooned into finished dishes rather than served alongside them. In many households, sambal is less a recipe card than a flexible grammar for balancing
+      heat, salinity, acidity, sweetness, and aroma.
+    </p>
+    <p>
+      That flexibility is why our <a href={`/${topic.slug}/ontology/`}>ontology and knowledge base</a> treats sambal as a structured set of families instead of a flat list.
+      The same term can point to a rough mortar-pounded relish, a smoother cooked paste, or a dish component fried with meat, seafood, or vegetables. Once you see
+      sambal as a functional category, the regional differences become easier to interpret and the troubleshooting advice on the
+      <a href={`/${topic.slug}/challenges/`}>challenges page</a> becomes more actionable.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Why region matters in sambal making">
+    <p>
+      Regional identity shows up in ingredient choice as much as in naming. Local chili varieties, aromatics, seafood products, palm sugar, limes, tomatoes,
+      and herbs change from island to island and from market to market. The Biomed Central review notes that Indonesia alone supports a wide range of sambal forms,
+      reflecting both biodiversity and layered culinary history. Malaysia and Singapore participate in the same broader sambal culture, but service styles, family
+      habits, and ingredient availability still nudge recipes in different directions.
+    </p>
+    <p>
+      This regional lens matters for cooks because it prevents one of the most common mistakes: flattening every sambal into a generic “spicy sauce.” A bright fresh sambal
+      served with fried fish should not be evaluated by the same criteria as a darker, cooked sambal intended to coat ingredients in a pan. Our
+      <a href={`/${topic.slug}/trends/`}>trends page</a> shows how those distinctions are being reinterpreted today by restaurants and packaged-food makers, but the regional base remains the key.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Core ingredients and flavor architecture">
+    <p>
+      Chili is the anchor, but chili alone never explains the final result. Shallots, garlic, belacan or terasi, tamarind, lime, palm sugar, tomatoes, and oil all influence both flavor and structure.
+      A sambal can be sharp and immediate, smoky and deep, or sweetly rounded depending on whether its aromatic base is raw, roasted, or fried. That is why the same spoonful of heat can behave very differently
+      when paired with grilled seafood, rice, noodles, or raw vegetables.
+    </p>
+    <p>
+      The <a href={`/${topic.slug}/technical-deep-dive/`}>technical page</a> goes into ingredient function in detail, including how coarse pounding changes mouthfeel and how oil can soften aggressive heat while preserving aroma.
+      Readers who want a faster glossary of the ingredient terms and style labels they will encounter should also open the <a href={`/${topic.slug}/ontology/`}>ontology page</a>.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="How to use this site">
+    <p>
+      Start here if you want the map. Then move to <a href={`/${topic.slug}/history/`}>history</a> for the cultural timeline, to <a href={`/${topic.slug}/technical-deep-dive/`}>technical deep-dive</a> for method,
+      to <a href={`/${topic.slug}/ontology/`}>ontology</a> for definitions, to <a href={`/${topic.slug}/trends/`}>trends</a> for modern movement, to <a href={`/${topic.slug}/tools/`}>tools</a> for practical kitchen support,
+      and to <a href={`/${topic.slug}/challenges/`}>challenges</a> whenever a batch tastes harsh, flat, watery, or unstable. The site is organized so a home cook, recipe developer, or curious reader can enter at the level
+      they need without losing the larger regional picture.
+    </p>
+  </ContentSection>
+</TopicLayout>

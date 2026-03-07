@@ -1,0 +1,76 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import { topic, navItems, footerLinks, pillarLinks } from '../../data/site';
+
+const pageLinks = pillarLinks.map((link) => ({ ...link, active: link.href === `/${topic.slug}/trends/` }));
+const relatedTopics = pillarLinks.filter((link) => link.href !== `/${topic.slug}/trends/`).map((link) => ({ href: link.href, label: link.label }));
+const keyPoints = [
+  'Diaspora cooking and restaurant culture are broadening sambal literacy.',
+  'Packaged sambal brands simplify access but can flatten regional nuance.',
+  'Tooling and technique education matter more as readers move beyond single recipes.',
+];
+---
+
+<TopicLayout
+  title="Current Trends in Regional Sambal Traditions | Cafe Sambal"
+  description="See how restaurant culture, diaspora cooking, pantry brands, and online instruction are reshaping regional sambal traditions."
+  topic={topic}
+  pillar="Trends"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+  navItems={navItems}
+  footerLinks={footerLinks}
+  pillarLinks={pageLinks}
+>
+  <h1>Current Trends and Future Outlook for Regional Sambal Traditions</h1>
+  <p>
+    Sambal is no longer encountered only in regional home kitchens or specialist restaurants. It appears in global grocery aisles, on restaurant menus, in recipe-video ecosystems, and inside fusion pantry products.
+    This increased visibility creates opportunity and risk at the same time. On one hand, more cooks can access chili condiments and develop curiosity about Southeast Asian foodways. On the other, simplified product labeling often compresses
+    regional differences into a single hot-sauce idea.
+  </p>
+  <p>
+    The <a href={`/${topic.slug}/`}>overview page</a> gives the category map, while the <a href={`/${topic.slug}/history/`}>history page</a> shows why present-day variation matters. This page focuses on where sambal knowledge is heading and what that means for home cooks, recipe developers, and food media.
+  </p>
+
+  <ContentSection title="Diaspora kitchens and new teaching formats">
+    <p>
+      Diaspora cooks are among the most important interpreters of sambal today. They adapt ingredient access, explain unfamiliar terms to new audiences, and often translate inherited kitchen logic into formats suitable for blogs, cookbooks, and social media.
+      That work expands access without necessarily abandoning regional specificity. In many cases, diaspora teaching actually sharpens awareness of why substitutions change results.
+    </p>
+    <p>
+      Readers who need help navigating substitutions should pair this discussion with the <a href={`/${topic.slug}/tools/`}>tools page</a>. Readers interested in terminology and style labels should cross-reference the <a href={`/${topic.slug}/ontology/`}>ontology page</a>.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Packaged sambal and the pantry-brand boom">
+    <p>
+      Jarred sambals and shelf-stable chili condiments have made the category easier to enter, especially for cooks without access to fresh ingredients or specialized markets. The tradeoff is that pantry brands often standardize texture and heat profile for mass appeal.
+      That makes them useful as entry points, but not always good teachers of regional logic. A bright fresh sambal, a slow-cooked oily sambal, and a shrimp-paste-driven sambal can all be reduced to the same shelf category in retail language.
+    </p>
+    <p>
+      This is one reason technical literacy matters. The <a href={`/${topic.slug}/technical-deep-dive/`}>technical page</a> explains what those packaged versions may flatten, and the <a href={`/${topic.slug}/challenges/`}>challenges page</a> helps cooks recover complexity when a jar tastes one-dimensional.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Restaurant menus and regional storytelling">
+    <p>
+      Contemporary restaurants are increasingly treating sambal as a storytelling device rather than a generic condiment. Menus may identify a sambal by region, ingredient focus, or dish relationship, inviting diners to think about why the condiment belongs with a particular plate.
+      That style of storytelling has educational value because it pulls sambal away from the vague “spicy sauce” label and reconnects it to culinary geography.
+    </p>
+    <p>
+      For readers building their own understanding, the next useful stop is often the <a href={`/${topic.slug}/history/`}>history page</a>, which gives the deeper context behind these restaurant narratives.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="What the next wave looks like">
+    <p>
+      The likely future of sambal education is more structured, not less. As more cooks seek practical understanding rather than novelty heat, there is space for better glossaries, more transparent substitution logic, and tools that help readers adjust balance with intention. That is why Cafe Sambal includes a dedicated
+      <a href={`/${topic.slug}/tools/`}>tools and resources section</a> rather than relying only on static prose.
+    </p>
+    <p>
+      The future is also likely to reward specificity. Sites that can clearly distinguish between styles, ingredients, and kitchen functions will be more useful than generic “best hot sauce” content. The full path from category introduction to repair work runs through the <a href={`/${topic.slug}/`}>overview</a>,
+      <a href={`/${topic.slug}/ontology/`}>ontology</a>, and <a href={`/${topic.slug}/challenges/`}>challenges</a> pages together.
+    </p>
+  </ContentSection>
+</TopicLayout>

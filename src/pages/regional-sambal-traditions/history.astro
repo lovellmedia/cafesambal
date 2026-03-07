@@ -1,0 +1,83 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import { topic, navItems, footerLinks, pillarLinks } from '../../data/site';
+
+const pageLinks = pillarLinks.map((link) => ({ ...link, active: link.href === `/${topic.slug}/history/` }));
+const relatedTopics = pillarLinks.filter((link) => link.href !== `/${topic.slug}/history/`).map((link) => ({ href: link.href, label: link.label }));
+const keyPoints = [
+  'Sambal predates modern bottle culture and belongs to older condiment traditions.',
+  'Chili peppers arrived through colonial-era exchange and were absorbed into local flavor systems.',
+  'Regional divergence followed trade routes, local produce, and family cooking practice.',
+];
+---
+
+<TopicLayout
+  title="History of Regional Sambal Traditions | Cafe Sambal"
+  description="Explore how sambal developed from older pepper condiments into diverse regional traditions across maritime Southeast Asia."
+  topic={topic}
+  pillar="History"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+  navItems={navItems}
+  footerLinks={footerLinks}
+  pillarLinks={pageLinks}
+>
+  <h1>History and Evolution of Regional Sambal Traditions</h1>
+  <p>
+    Modern sambal belongs to a longer story of spice, trade, and adaptation. Southeast Asian cuisines already had systems for pounding aromatics and sharp seasonings
+    before New World chili peppers arrived. When chilies entered regional trade networks through Iberian exchange, they were incorporated into older patterns of grinding,
+    seasoning, and table service rather than simply replacing everything that came before. That process matters because it explains why sambal feels both ancient and dynamic:
+    it is rooted in inherited condiment practice but shaped decisively by later ingredient circulation.
+  </p>
+  <p>
+    If you are just joining the topic, the <a href={`/${topic.slug}/`}>overview page</a> explains the category and why region matters. If you want to understand how these historical changes play out in the kitchen,
+    the <a href={`/${topic.slug}/technical-deep-dive/`}>technical deep-dive</a> connects historical ingredient adoption to texture, heat, and storage choices.
+  </p>
+
+  <ContentSection title="Before chili: older spicy condiments and pounding traditions">
+    <p>
+      Historical food cultures across the region already relied on pestles, mortars, pungent aromatics, salt, souring agents, and local pepper species. The Journal of Ethnic Foods review emphasizes that sambal history cannot
+      be reduced to chilies alone because older spicy and aromatic condiments formed the practical base into which new ingredients were absorbed. That means the history of sambal is also the history of tools, texture preference,
+      and the social habit of serving sharp condiments alongside staple foods.
+    </p>
+    <p>
+      This earlier layer still matters when cooks compare rough, hand-pounded sambal with machine-blended versions. Texture carries memory. The issue returns on the <a href={`/${topic.slug}/challenges/`}>challenges page</a>,
+      where overly smooth sambal often feels dull or disconnected from the intended dish.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="The arrival of chili peppers and regional adoption">
+    <p>
+      Chili peppers reached Asia through colonial trade after their movement out of the Americas. Once in maritime Southeast Asia, they were adopted quickly because they fit existing culinary logic: they added heat, color, preservative support,
+      and flexibility. Sources like <a href="https://en.wikipedia.org/wiki/Sambal">Wikipedia’s sambal history summary</a> and the open-access ethnographic review both describe how chilies eventually became central to the condiments now grouped under the sambal label.
+    </p>
+    <p>
+      Adoption was not uniform. Different ports and agricultural zones favored different chilies, sweeteners, fermented ingredients, or citrus elements. That is one reason a cook should not treat “authentic sambal” as a single frozen standard.
+      The <a href={`/${topic.slug}/ontology/`}>ontology page</a> organizes these branches so the historical spread remains visible rather than collapsing into one generic red paste.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Households, markets, and migration">
+    <p>
+      Sambal moved through homes, street markets, and migration routes. Families retained local preferences while cities and port communities accelerated borrowing and reinterpretation. In practical terms, one region’s use of shrimp paste,
+      tomatoes, green chilies, or sweet soy might become another cook’s adaptation after relocation or market change. This is also why diaspora kitchens continue to reshape sambal today, a pattern picked up again on the
+      <a href={`/${topic.slug}/trends/`}>trends page</a>.
+    </p>
+    <p>
+      The historical record therefore tells cooks something useful: variation is normal. The goal is not to erase variation but to understand which parts of a sambal are foundational and which parts are responsive to place, availability, and intended use.
+      That insight becomes practical on the <a href={`/${topic.slug}/tools/`}>tools page</a>, where substitution guidance is framed as controlled adaptation rather than random replacement.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="From table condiment to culinary symbol">
+    <p>
+      Over time, sambal became more than a side condiment. It turned into a symbol of regional identity and a marker of culinary confidence. Some versions are still served simply as condiments, while others function as cooking bases for dishes that carry the sambal name into the main plate.
+      That dual role explains why histories of sambal must look at both the table and the stove.
+    </p>
+    <p>
+      Readers moving forward from history usually benefit from either the <a href={`/${topic.slug}/technical-deep-dive/`}>technical page</a>, which explains the mechanics of making and applying sambal, or the
+      <a href={`/${topic.slug}/trends/`}>trends page</a>, which shows how contemporary chefs, brands, and online cooks are reframing that legacy.
+    </p>
+  </ContentSection>
+</TopicLayout>

@@ -1,0 +1,70 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import { topic, navItems, footerLinks, pillarLinks } from '../../data/site';
+
+const pageLinks = pillarLinks.map((link) => ({ ...link, active: link.href === `/${topic.slug}/challenges/` }));
+const relatedTopics = pillarLinks.filter((link) => link.href !== `/${topic.slug}/challenges/`).map((link) => ({ href: link.href, label: link.label }));
+const keyPoints = [
+  'Most sambal failures come from balance, texture, or service mismatch rather than heat level alone.',
+  'Fixes work better when tied to sambal family: fresh, cooked, or fermented-forward.',
+  'Troubleshooting is easiest when cooks know the intended regional style and use case.',
+];
+---
+
+<TopicLayout
+  title="Common Sambal Challenges and Solutions | Cafe Sambal"
+  description="Troubleshoot common sambal problems including watery texture, harsh heat, bitterness, imbalance, and poor storage outcomes."
+  topic={topic}
+  pillar="Challenges"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+  navItems={navItems}
+  footerLinks={footerLinks}
+  pillarLinks={pageLinks}
+>
+  <h1>Common Challenges and Solutions in Regional Sambal Making</h1>
+  <p>
+    Sambal problems are usually structural. A batch tastes harsh because the aromatics were not balanced, watery because ingredient moisture was not controlled, dull because the texture is too uniform, or confusing because a cook is expecting one regional style to behave like another.
+    This page is built around those real failure patterns and points readers back to the relevant supporting pillars when a fix requires deeper context.
+  </p>
+  <p>
+    If you need the category map first, start with the <a href={`/${topic.slug}/`}>overview page</a>. If you suspect the problem is really technical rather than ingredient-based, move to the <a href={`/${topic.slug}/technical-deep-dive/`}>technical page</a>. For term confusion, open the <a href={`/${topic.slug}/ontology/`}>ontology page</a>.
+  </p>
+
+  <ContentSection title="Problem: the sambal tastes harsh or one-note">
+    <p>
+      <strong>Cause:</strong> The most common reason is underdeveloped balance. A sambal can be extremely hot yet feel thin if it lacks enough salt, acid, sweetness, or savory depth. Raw aromatics can also dominate if the style was meant to be cooked.
+    </p>
+    <p>
+      <strong>Solution:</strong> First identify the intended family. If it is a fresh sambal, tune balance with acid and salt before adding sugar. If it is a cooked sambal, consider whether the aromatic base needed more time in oil. Then compare your approach with the method principles on the <a href={`/${topic.slug}/technical-deep-dive/`}>technical deep-dive</a> and use the balancing guidance on the <a href={`/${topic.slug}/tools/`}>tools page</a>.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Problem: the texture is watery or muddy">
+    <p>
+      <strong>Cause:</strong> Excess moisture from tomatoes, fresh chilies, or over-blending can make sambal loose and dull. Another frequent problem is applying blender logic to a style that depends on a coarser pounded texture.
+    </p>
+    <p>
+      <strong>Solution:</strong> Reduce added water, process in smaller bursts, or fry longer if the style is cooked. If the sambal is supposed to be rustic, stop chasing smoothness. Review the category distinctions on the <a href={`/${topic.slug}/ontology/`}>ontology page</a> and the texture discussion on the <a href={`/${topic.slug}/technical-deep-dive/`}>technical page</a>.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Problem: the sambal does not suit the dish it is served with">
+    <p>
+      <strong>Cause:</strong> A mismatch between sambal style and service context. A bright, raw sambal may feel too sharp beside a dish that wants a deeper cooked profile, while a heavy cooked sambal can overwhelm something that needs lift.
+    </p>
+    <p>
+      <strong>Solution:</strong> Reframe the issue as pairing, not failure. Use the <a href={`/${topic.slug}/`}>overview</a> and <a href={`/${topic.slug}/history/`}>history</a> pages to understand how sambal behaves in different dining contexts, then adjust based on intended role: table condiment, frying base, or finishing spoonful.
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Problem: the batch does not keep well">
+    <p>
+      <strong>Cause:</strong> Storage problems usually come from high moisture, inconsistent cooking, poor container hygiene, or treating all sambals as equally shelf-stable. Fresh sambals and cooked sambals should not be expected to keep the same way.
+    </p>
+    <p>
+      <strong>Solution:</strong> Identify the family, cool and store correctly, and reduce avoidable moisture. The <a href={`/${topic.slug}/technical-deep-dive/`}>technical page</a> explains why oil, salt, and cooking time influence stability, and the <a href={`/${topic.slug}/trends/`}>trends page</a> helps readers understand why packaged sambal is not the right comparison for every homemade version.
+    </p>
+  </ContentSection>
+</TopicLayout>

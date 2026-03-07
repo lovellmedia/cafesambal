@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { navItems, footerLinks } from '../../../data/site';
+---
+
+<BaseLayout
+  title="Sambal Heat Balancer | Cafe Sambal"
+  description="Interactive sambal heat balancer for adjusting chili intensity, sweetness, acidity, and savoriness in a batch."
+  navItems={navItems}
+  footerLinks={footerLinks}
+>
+  <div class="page-shell tool-shell">
+    <h1>Sambal Heat Balancer</h1>
+    <p>Choose the main problem you taste and the style of sambal you are making. The tool suggests the next adjustment to try.</p>
+
+    <form class="tool-card" onsubmit="return false;">
+      <label>
+        Main issue
+        <select id="issue">
+          <option value="too_hot">Too hot and sharp</option>
+          <option value="too_sweet">Too sweet</option>
+          <option value="too_flat">Too flat</option>
+          <option value="too_salty">Too salty</option>
+        </select>
+      </label>
+
+      <label>
+        Sambal style
+        <select id="style">
+          <option value="fresh">Fresh / raw</option>
+          <option value="cooked">Cooked / oil-based</option>
+          <option value="fermented">Fermented-forward</option>
+        </select>
+      </label>
+
+      <button type="button" onclick="runBalancer()">Get adjustment</button>
+      <div id="result" class="result"></div>
+    </form>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  function runBalancer() {
+    const issue = document.getElementById('issue').value;
+    const style = document.getElementById('style').value;
+    const result = document.getElementById('result');
+
+    const map = {
+      too_hot: {
+        fresh: 'Add a small pinch of salt and a little lime juice first, then soften the edge with more shallot or tomato.',
+        cooked: 'Increase the fried aromatic base or a touch of palm sugar; if needed, add more oil and cook briefly to round the heat.',
+        fermented: 'Balance with sweetness and a small amount of cooked aromatics before adding more fermented ingredients.'
+      },
+      too_sweet: {
+        fresh: 'Add chili, salt, and acid in small increments so the sambal tastes brighter rather than sugary.',
+        cooked: 'Reduce with more chili and savory ingredients, then cook until the sweetness integrates.',
+        fermented: 'Use acid and salt first, then only add heat if the profile still feels candy-like.'
+      },
+      too_flat: {
+        fresh: 'Add salt first, then a squeeze of citrus and one more aromatic ingredient such as shallot.',
+        cooked: 'Cook a little longer in oil and check whether shrimp paste or another savory base needs reinforcement.',
+        fermented: 'Add a fresh note like citrus or chili to lift the fermented depth.'
+      },
+      too_salty: {
+        fresh: 'Dilute with more fresh chili, tomato, or aromatics rather than water alone.',
+        cooked: 'Increase the unsalted base ingredients and re-cook so the batch stays cohesive.',
+        fermented: 'Add more chili and non-salty aromatics, then taste before any further seasoning.'
+      }
+    };
+
+    result.textContent = map[issue][style];
+  }
+</script>
+
+<style>
+  .tool-shell {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .tool-card {
+    max-width: 680px;
+    display: grid;
+    gap: 1rem;
+    background: rgba(255, 250, 245, 0.88);
+    border: 1px solid rgba(124, 45, 18, 0.12);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+  label {
+    display: grid;
+    gap: 0.45rem;
+    font-weight: 600;
+    color: #7c2d12;
+  }
+  select,
+  button {
+    font: inherit;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(124, 45, 18, 0.18);
+  }
+  button {
+    background: #c2410c;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .result {
+    min-height: 4rem;
+    background: #fff7ed;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    line-height: 1.7;
+    color: #4b3325;
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+const { relatedTopics = [], keyPoints = [] } = Astro.props;
+---
+
+<aside class="sidebar">
+  <section>
+    <h3>Quick Takeaways</h3>
+    <ul>
+      {keyPoints.map((point) => (
+        <li>{point}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section>
+    <h3>Related Pages</h3>
+    <ul>
+      {relatedTopics.map((topic) => (
+        <li><a href={topic.href}>{topic.label}</a></li>
+      ))}
+    </ul>
+  </section>
+</aside>
+
+<style>
+  .sidebar {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  section {
+    background: #fffaf5;
+    border: 1px solid rgba(124, 45, 18, 0.12);
+    border-radius: 1rem;
+    padding: 1.1rem 1.15rem;
+    box-shadow: 0 12px 30px rgba(124, 45, 18, 0.06);
+  }
+
+  h3 {
+    margin: 0 0 0.75rem;
+    color: #7c2d12;
+    font-size: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+    color: #3f2a1d;
+  }
+
+  a {
+    color: #9a3412;
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>
